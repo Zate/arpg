@@ -1,0 +1,30 @@
+@import "base";
+@import "hud";
+
+.hud-debug {
+  @extend .hud;
+  right: 0;
+  display: none;
+}
+
+dl.dl-horizontal {
+  font-size: 12pt;
+  font-family: $font-secondary;
+
+  dt {
+    float: left;
+    clear: left;
+    width: 60px;
+    text-align: right;
+    font-weight: bold;
+  }
+  dt:after {
+    content: ":";
+  }
+  dd {
+    width: 50px;
+    margin: 0 0 0 70px;
+    padding: 0 0.25em 0.25em 0;
+    font-family: $font-mono;
+  }
+}

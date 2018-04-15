@@ -1,0 +1,47 @@
+@import "hud";
+
+div.hud-leaderboard {
+  @extend .hud;
+  display: none;
+  width: 300px;
+}
+
+table.leaderboard {
+  &.tail {
+    color: transparentize($color-primary, ($hud-transparency * 3))
+  }
+
+  table-layout: fixed;
+  width: 100%;
+  font-size: 8pt;
+
+  tbody tr.current {
+    color: $color-primary;
+    font-weight: 900;
+  }
+
+  tbody tr td {
+    &.rank-position {
+      text-align: right;
+      width: 10%;
+      font-family: $font-mono;
+    }
+    &.name {
+      font-family: $font-secondary;
+
+      text-align: left;
+      width: 70%;
+
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    &.score {
+      font-family: $font-mono;
+      text-align: right;
+      width: 20%;
+    }
+
+    padding: 5px;
+  }
+}

@@ -1,0 +1,183 @@
+syntax = "proto3";
+package arpg;
+option go_package = "pb";
+
+message Message {
+  oneof content {
+    Space           space             = 1;
+    Hello           hello             = 2;
+    PlayerLeft      playerLeft        = 3;
+    ProjectileFired projectileFired   = 4;
+    ProjectileHit   projectileHit     = 5;
+    PlayerJoined    playerJoined      = 6;
+    JoinGameAck     joinGameAck       = 7;
+    Leaderboard     leaderboard       = 8;
+    PlayerDied      playerDied        = 9;
+    Pong            pong              = 10;
+    ScoreBoard      scoreBoard        = 11;
+    Constants       constants         = 12;
+  }
+}
+
+message Point {
+  sint32 x = 1;
+  sint32 y = 2;
+}
+
+message Vector {
+  float x = 1;
+  float y = 2;
+}
+
+enum Direction {
+  DIR_CENTER = 0;
+  DIR_RIGHT = 1;
+  DIR_LEFT = 2;
+}
+
+message Spaceship {
+  uint32    id = 1;
+  Point     position = 2;
+  Vector    velocity = 3;
+  double    facing = 4;
+  double    angularVelocity = 5;
+  Direction inputDirection = 6;
+  bool      inputThrust = 7;
+  bool      inputBoost = 8;
+  uint32    maxHp = 9;
+  uint32    hp = 10;
+  uint32    maxEnergy = 11;
+  uint32    energy = 12;
+  uint32    autoRepairDelay = 13;
+}
+
+message Asteroid {
+  uint32    id = 1;
+  Point     position = 2;
+  Vector    velocity = 3;
+  double    facing = 4;
+  double    angularVelocity = 5;
+}
+
+message ProjectileFired {
+  uint32    id = 1;
+  uint32    frameId = 2;
+  Point     origin = 3;
+  Vector    velocity = 4;
+  float     facing = 5;
+  uint32    ttl = 6;
+}
+
+message ProjectileHit {
+  uint32    id = 1;
+}
+
+message PlayerLeft {
+  uint32 id = 1;
+}
+
+message PlayerJoined {
+  uint32 id = 1;
+  string username = 2;
+};
+
+message PlayerDied {
+  uint32 id = 1;
+  uint32 killedBy = 2;
+}
+
+message Ping {
+  uint32 Id = 1;
+}
+
+message Pong {
+  uint32 Id = 1;
+}
+
+message Space {
+  uint32 physicsFrameID = 1;
+  repeated Spaceship spaceships = 2;
+  repeated Asteroid asteroids = 3;
+}
+
+message Hello {
+  uint32 myId = 1;
+  map<uint32, string> idToUsername = 2;
+}
+
+message Constants {
+  float worldRadius = 1;
+  float boundaryAnnulusWidth  = 2;
+  float spaceshipAcceleration = 3;
+  float frictionCoefficient = 4;
+  float spaceshipNonlinearAngularAcceleration = 5;
+  float spaceshipLinearAngularAcceleration = 6;
+  float spaceshipMaxAngularVelocity = 7;
+  float spaceshipAngularFriction = 8;
+  uint32 spaceshipMaxSpeed = 9;
+  float spaceshipBoostFactor = 10;
+  uint32 autoRepairInterval = 11;
+  uint32 autoRepairAmount = 12;
+  uint32 autoEnergyRechargeAmount = 13;
+  uint32 boostPerFrameEnergyCost = 14;
+}
+
+message JoinGame {
+  string username = 1;
+}
+
+message JoinGameAck {
+  bool   success = 1;
+  string error   = 2;
+}
+
+enum UserInput {
+  CENTER = 0;
+  LEFT = 1;
+  RIGHT = 2;
+  THRUST_ON = 3;
+  THRUST_OFF = 4;
+  STRAIGHT_FIRE_START = 5;
+  TURRET_FIRE_START = 6;
+  FIRE_STOP = 7;
+  BOOST_ON = 8;
+  BOOST_OFF = 9;
+}
+
+message UserAction {
+  UserInput userInput = 1;
+}
+
+message TargetAngle {
+  float angle = 1;
+}
+
+message UserMessage {
+  oneof content {
+    UserAction  userAction  = 1;
+    JoinGame    joinGame    = 2;
+    Ping        ping        = 3;
+    TargetAngle  targetAngle = 4;
+  }
+}
+
+message Rank {
+  uint32 id = 1;
+  uint32 score = 2;
+}
+
+message Leaderboard {
+  repeated Rank ranks = 1;
+  uint32 clientId = 2;
+  uint32 userScore = 3;
+  uint32 userPosition = 4;
+}
+
+message ScoreBoardItem {
+  uint32 score = 1;
+  string name = 2;
+}
+
+message ScoreBoard {
+  repeated ScoreBoardItem items = 1;
+}

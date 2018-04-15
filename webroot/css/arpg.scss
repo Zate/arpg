@@ -1,0 +1,27 @@
+@import "base";
+@import "dialog";
+@import "leaderboard";
+@import "hud-debug";
+@import "score-board";
+
+body {
+  overflow: hidden;
+  font-family: $font-primary;
+}
+
+canvas {
+  position: absolute;
+}
+
+.debug {
+  display: none;
+}
+
+#submit-username-form {
+  margin-top: 35px;
+}
+
+#intro {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}

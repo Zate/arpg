@@ -1,0 +1,31 @@
+version: '2'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend/Dockerfile
+    image: zate75/arpg-backend
+    ports:
+    - "8081:8080"
+    volumes:
+    - .:/go/src/arpg
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend/Dockerfile
+    image: zate75/arpg-frontend
+    ports:
+    - "8091:8090"
+    environment:
+    - BACKEND_HOST=localhost
+    - BACKEND_PORT=8081
+    depends_on:
+    - backend
+    volumes:
+    - .:/code
+  utils:
+    build:
+      context: .
+      dockerfile: docker/utils/Dockerfile
+    volumes:
+    - .:/go/src/arpg

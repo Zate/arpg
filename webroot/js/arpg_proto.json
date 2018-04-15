@@ -1,0 +1,743 @@
+{
+    "package": "arpg",
+    "options": {
+        "go_package": "pb"
+    },
+    "messages": [
+        {
+            "name": "Message",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "Space",
+                    "name": "space",
+                    "id": 1,
+                    "oneof": "content"
+                },
+                {
+                    "rule": "optional",
+                    "type": "Hello",
+                    "name": "hello",
+                    "id": 2,
+                    "oneof": "content"
+                },
+                {
+                    "rule": "optional",
+                    "type": "PlayerLeft",
+                    "name": "playerLeft",
+                    "id": 3,
+                    "oneof": "content"
+                },
+                {
+                    "rule": "optional",
+                    "type": "ProjectileFired",
+                    "name": "projectileFired",
+                    "id": 4,
+                    "oneof": "content"
+                },
+                {
+                    "rule": "optional",
+                    "type": "ProjectileHit",
+                    "name": "projectileHit",
+                    "id": 5,
+                    "oneof": "content"
+                },
+                {
+                    "rule": "optional",
+                    "type": "PlayerJoined",
+                    "name": "playerJoined",
+                    "id": 6,
+                    "oneof": "content"
+                },
+                {
+                    "rule": "optional",
+                    "type": "JoinGameAck",
+                    "name": "joinGameAck",
+                    "id": 7,
+                    "oneof": "content"
+                },
+                {
+                    "rule": "optional",
+                    "type": "Leaderboard",
+                    "name": "leaderboard",
+                    "id": 8,
+                    "oneof": "content"
+                },
+                {
+                    "rule": "optional",
+                    "type": "PlayerDied",
+                    "name": "playerDied",
+                    "id": 9,
+                    "oneof": "content"
+                },
+                {
+                    "rule": "optional",
+                    "type": "Pong",
+                    "name": "pong",
+                    "id": 10,
+                    "oneof": "content"
+                },
+                {
+                    "rule": "optional",
+                    "type": "ScoreBoard",
+                    "name": "scoreBoard",
+                    "id": 11,
+                    "oneof": "content"
+                },
+                {
+                    "rule": "optional",
+                    "type": "Constants",
+                    "name": "constants",
+                    "id": 12,
+                    "oneof": "content"
+                }
+            ],
+            "oneofs": {
+                "content": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12
+                ]
+            }
+        },
+        {
+            "name": "Point",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "sint32",
+                    "name": "x",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "sint32",
+                    "name": "y",
+                    "id": 2
+                }
+            ]
+        },
+        {
+            "name": "Vector",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "float",
+                    "name": "x",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "float",
+                    "name": "y",
+                    "id": 2
+                }
+            ]
+        },
+        {
+            "name": "Spaceship",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "id",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "Point",
+                    "name": "position",
+                    "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "type": "Vector",
+                    "name": "velocity",
+                    "id": 3
+                },
+                {
+                    "rule": "optional",
+                    "type": "double",
+                    "name": "facing",
+                    "id": 4
+                },
+                {
+                    "rule": "optional",
+                    "type": "double",
+                    "name": "angularVelocity",
+                    "id": 5
+                },
+                {
+                    "rule": "optional",
+                    "type": "Direction",
+                    "name": "inputDirection",
+                    "id": 6
+                },
+                {
+                    "rule": "optional",
+                    "type": "bool",
+                    "name": "inputThrust",
+                    "id": 7
+                },
+                {
+                    "rule": "optional",
+                    "type": "bool",
+                    "name": "inputBoost",
+                    "id": 8
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "maxHp",
+                    "id": 9
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "hp",
+                    "id": 10
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "maxEnergy",
+                    "id": 11
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "energy",
+                    "id": 12
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "autoRepairDelay",
+                    "id": 13
+                }
+            ]
+        },
+        {
+            "name": "Asteroid",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "id",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "Point",
+                    "name": "position",
+                    "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "type": "Vector",
+                    "name": "velocity",
+                    "id": 3
+                },
+                {
+                    "rule": "optional",
+                    "type": "double",
+                    "name": "facing",
+                    "id": 4
+                },
+                {
+                    "rule": "optional",
+                    "type": "double",
+                    "name": "angularVelocity",
+                    "id": 5
+                }
+            ]
+        },
+        {
+            "name": "ProjectileFired",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "id",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "frameId",
+                    "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "type": "Point",
+                    "name": "origin",
+                    "id": 3
+                },
+                {
+                    "rule": "optional",
+                    "type": "Vector",
+                    "name": "velocity",
+                    "id": 4
+                },
+                {
+                    "rule": "optional",
+                    "type": "float",
+                    "name": "facing",
+                    "id": 5
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "ttl",
+                    "id": 6
+                }
+            ]
+        },
+        {
+            "name": "ProjectileHit",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "id",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "PlayerLeft",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "id",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "PlayerJoined",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "id",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "string",
+                    "name": "username",
+                    "id": 2
+                }
+            ]
+        },
+        {
+            "name": "PlayerDied",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "id",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "killedBy",
+                    "id": 2
+                }
+            ]
+        },
+        {
+            "name": "Ping",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "Id",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "Pong",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "Id",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "Space",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "physicsFrameID",
+                    "id": 1
+                },
+                {
+                    "rule": "repeated",
+                    "type": "Spaceship",
+                    "name": "spaceships",
+                    "id": 2
+                },
+                {
+                    "rule": "repeated",
+                    "type": "Asteroid",
+                    "name": "asteroids",
+                    "id": 3
+                }
+            ]
+        },
+        {
+            "name": "Hello",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "myId",
+                    "id": 1
+                },
+                {
+                    "rule": "map",
+                    "type": "string",
+                    "keytype": "uint32",
+                    "name": "idToUsername",
+                    "id": 2
+                }
+            ]
+        },
+        {
+            "name": "Constants",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "float",
+                    "name": "worldRadius",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "float",
+                    "name": "boundaryAnnulusWidth",
+                    "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "type": "float",
+                    "name": "spaceshipAcceleration",
+                    "id": 3
+                },
+                {
+                    "rule": "optional",
+                    "type": "float",
+                    "name": "frictionCoefficient",
+                    "id": 4
+                },
+                {
+                    "rule": "optional",
+                    "type": "float",
+                    "name": "spaceshipNonlinearAngularAcceleration",
+                    "id": 5
+                },
+                {
+                    "rule": "optional",
+                    "type": "float",
+                    "name": "spaceshipLinearAngularAcceleration",
+                    "id": 6
+                },
+                {
+                    "rule": "optional",
+                    "type": "float",
+                    "name": "spaceshipMaxAngularVelocity",
+                    "id": 7
+                },
+                {
+                    "rule": "optional",
+                    "type": "float",
+                    "name": "spaceshipAngularFriction",
+                    "id": 8
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "spaceshipMaxSpeed",
+                    "id": 9
+                },
+                {
+                    "rule": "optional",
+                    "type": "float",
+                    "name": "spaceshipBoostFactor",
+                    "id": 10
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "autoRepairInterval",
+                    "id": 11
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "autoRepairAmount",
+                    "id": 12
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "autoEnergyRechargeAmount",
+                    "id": 13
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "boostPerFrameEnergyCost",
+                    "id": 14
+                }
+            ]
+        },
+        {
+            "name": "JoinGame",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "string",
+                    "name": "username",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "JoinGameAck",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "bool",
+                    "name": "success",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "string",
+                    "name": "error",
+                    "id": 2
+                }
+            ]
+        },
+        {
+            "name": "UserAction",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "UserInput",
+                    "name": "userInput",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "TargetAngle",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "float",
+                    "name": "angle",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "UserMessage",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "UserAction",
+                    "name": "userAction",
+                    "id": 1,
+                    "oneof": "content"
+                },
+                {
+                    "rule": "optional",
+                    "type": "JoinGame",
+                    "name": "joinGame",
+                    "id": 2,
+                    "oneof": "content"
+                },
+                {
+                    "rule": "optional",
+                    "type": "Ping",
+                    "name": "ping",
+                    "id": 3,
+                    "oneof": "content"
+                },
+                {
+                    "rule": "optional",
+                    "type": "TargetAngle",
+                    "name": "targetAngle",
+                    "id": 4,
+                    "oneof": "content"
+                }
+            ],
+            "oneofs": {
+                "content": [
+                    1,
+                    2,
+                    3,
+                    4
+                ]
+            }
+        },
+        {
+            "name": "Rank",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "id",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "score",
+                    "id": 2
+                }
+            ]
+        },
+        {
+            "name": "Leaderboard",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "type": "Rank",
+                    "name": "ranks",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "clientId",
+                    "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "userScore",
+                    "id": 3
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "userPosition",
+                    "id": 4
+                }
+            ]
+        },
+        {
+            "name": "ScoreBoardItem",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "score",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "string",
+                    "name": "name",
+                    "id": 2
+                }
+            ]
+        },
+        {
+            "name": "ScoreBoard",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "type": "ScoreBoardItem",
+                    "name": "items",
+                    "id": 1
+                }
+            ]
+        }
+    ],
+    "enums": [
+        {
+            "name": "Direction",
+            "values": [
+                {
+                    "name": "DIR_CENTER",
+                    "id": 0
+                },
+                {
+                    "name": "DIR_RIGHT",
+                    "id": 1
+                },
+                {
+                    "name": "DIR_LEFT",
+                    "id": 2
+                }
+            ]
+        },
+        {
+            "name": "UserInput",
+            "values": [
+                {
+                    "name": "CENTER",
+                    "id": 0
+                },
+                {
+                    "name": "LEFT",
+                    "id": 1
+                },
+                {
+                    "name": "RIGHT",
+                    "id": 2
+                },
+                {
+                    "name": "THRUST_ON",
+                    "id": 3
+                },
+                {
+                    "name": "THRUST_OFF",
+                    "id": 4
+                },
+                {
+                    "name": "STRAIGHT_FIRE_START",
+                    "id": 5
+                },
+                {
+                    "name": "TURRET_FIRE_START",
+                    "id": 6
+                },
+                {
+                    "name": "FIRE_STOP",
+                    "id": 7
+                },
+                {
+                    "name": "BOOST_ON",
+                    "id": 8
+                },
+                {
+                    "name": "BOOST_OFF",
+                    "id": 9
+                }
+            ]
+        }
+    ]
+}
