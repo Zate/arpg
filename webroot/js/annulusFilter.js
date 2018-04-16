@@ -1,6 +1,6 @@
 import * as Utils from './utils';
 
-const shaderContent = require('raw!../shaders/annulus_fog.frag');
+const shaderContent = require('raw-loader!../shaders/annulus_fog.frag');
 
 export default class AnnulusFilter extends PIXI.Filter {
   constructor () {

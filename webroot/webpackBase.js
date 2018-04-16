@@ -1,3 +1,5 @@
+//import { configure } from 'protobufjs';
+
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -8,35 +10,53 @@ module.exports = {
         vendor: ['protobufjs', 'pixi.js']
     },
     output: {
-        filename: "[name].[chunkhash].js",
-        chunkFilename: "[id].[chunkhash].js"
+        filename: "[name].[hash].js",
+        chunkFilename: "[id].[hash].js"
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendor',
+                    chunks: 'all'
+                }
+            }
+        }
     },
     module: {
-        preLoaders: [
+        rules: [
             {
                 test: /\.js$/,
-                loader: "eslint-loader",
-                exclude: /node_modules/
-            }
-        ],
-        loaders: [
+                use: "eslint-loader",
+                exclude: /node_modules/,
+                enforce: 'pre'
+            },
             {
                 test: /\.json$/,
-                loader: 'json'
+                use: 'json'
             }, {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel'
+                use: 'babel-loader'
             }, {
                 test: path.resolve(__dirname, 'node_modules', 'pixi.js'),
-                loader: 'ify'
+                use: 'ify-loader'
             }, {
                 test: /\.scss$/,
-                loader: "style!css!sass?outputStyle=expanded&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
-            }]
+                loader: "style-loader!css-loader!sass-loader?outputStyle=expanded&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
+            },
+            {
+                test: /\.js$/,
+                include: path.resolve(__dirname, 'node_modules/pixi.js'),
+                loader: 'transform-loader/cacheable?brfs',
+                enforce: 'post'
+                }
+        ]
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.[hash].js"),
+        //new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.[hash].js"),
+        //new config.optimization.splitChunks("vendor", "vendor.[hash].js"),
         new HtmlWebpackPlugin({
             title: 'arpg',
             template: 'index.ejs'
@@ -47,10 +67,5 @@ module.exports = {
             '__DEBUG__': process.env.DEBUG
 
         })
-    ],
-    postLoaders: [{
-        test: /\.js$/,
-        include: path.resolve(__dirname, 'node_modules/pixi.js'),
-        loader: 'transform/cacheable?brfs'
-    }]
+    ]
 };

@@ -6,23 +6,23 @@ const WIDTH = 300;
 const HEIGHT = 130;
 
 export default class GameOverDialog {
-  constructor (killedBy) {
-    this.domNode = document.createElement("div");
+  // constructor (killedBy) {
+  //   this.domNode = document.createElement("div");
 
-    this.domNode.className = 'game-dialog';
+  //   this.domNode.className = 'game-dialog';
 
-    this._updatePosition();
-    this.domNode.innerHTML = `
-    <div class="dialog-content">
-      <p class="dialog-message">You died, captain!</p>
-      <p class="dialog-message">Your score was: ` + globalState.score + `!</p>
-      <button id="submit" class="action-button" type="button" autofocus>Take revenge!</button>
-    </div>
-    `;
-    setTimeout(function () {
-      document.getElementById('submit').focus();
-    }, 50);
-  }
+  //   this._updatePosition();
+  //   this.domNode.innerHTML = `
+  //   <div class="dialog-content">
+  //     <p class="dialog-message">You died, captain!</p>
+  //     <p class="dialog-message">Your score was: ` + globalState.score + `!</p>
+  //     <button id="submit" class="action-button" type="button" autofocus>Take revenge!</button>
+  //   </div>
+  //   `;
+  //   setTimeout(function () {
+  //     document.getElementById('submit').focus();
+  //   }, 50);
+  // }
 
   show () {
     globalState.dialog = this
@@ -30,11 +30,11 @@ export default class GameOverDialog {
     document.body.appendChild(this.domNode);
     this.resizeListenerID = window.addEventListener("resize", () => { this._updatePosition() });
     this.submitListenerID  = document.
-          getElementById("submit").
-          addEventListener("click", (ev) => {
-            ev.preventDefault();
-            this._sendJoinGame();
-          });
+      getElementById("submit").
+      addEventListener("click", (ev) => {
+        ev.preventDefault();
+        this._sendJoinGame();
+      });
   }
 
   showError (errorMsg) {

@@ -22,15 +22,16 @@ document.getElementById('game').appendChild(renderer.view);
 
 const loadProgressHandler = (loader) => {
   console.log(`progress: ${loader.progress}%`);
+  
 };
 
 PIXI.loader.
   add(
-  [
-    Constants.SHIP_TEXTURE, Constants.BACKGROUND_TEXTURE,
-    Constants.FLAME_SPRITESHEET, Constants.PROJECTILE_SPRITESHEET,
-    Constants.BOOST_SPRITESHEET, Constants.CROSSHAIR_TEXTURE
-  ]).
+    [
+      Constants.SHIP_TEXTURE, Constants.BACKGROUND_TEXTURE,
+      Constants.FLAME_SPRITESHEET, Constants.PROJECTILE_SPRITESHEET,
+      Constants.BOOST_SPRITESHEET, Constants.CROSSHAIR_TEXTURE
+    ]).
   on("progress", loadProgressHandler).
   load(setup);
 

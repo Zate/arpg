@@ -1,4 +1,4 @@
-const shaderContent = require('raw!../shaders/circle_bar.frag');
+const shaderContent = require('raw-loader!../shaders/circle_bar.frag');
 
 export default class CircleBarFilter extends PIXI.Filter {
   constructor(basicColor) {
